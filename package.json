@@ -1,0 +1,17 @@
+{
+  "name": "product-admin-server",
+  "version": "1.0.0",
+  "description": "API REST con express y typescript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "npx tsc"
+  },
+  "author": "Carlos Zabala @czabala847",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
