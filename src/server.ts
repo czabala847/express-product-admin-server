@@ -16,6 +16,7 @@ async function connectDB() {
 connectDB();
 const server = express();
 
+server.use(express.json()); //Habilitar lectura del body
 server.use("/api/products", router);
 
 export default server;
