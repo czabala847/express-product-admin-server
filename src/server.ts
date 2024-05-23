@@ -1,15 +1,15 @@
-import colors from "colors";
+import color from "colors";
 import express from "express";
 import db from "./config/db";
 import router from "./router";
 
-async function connectDB() {
+export async function connectDB() {
   try {
     await db.authenticate();
     await db.sync();
-    console.log(colors.bgGreen.white.bold("DB conectada"));
+    // console.log(colors.bgGreen.white.bold("DB conectada"));
   } catch (error) {
-    console.error(colors.bgRed.white.bold("Error conectar DB"), error);
+    console.error(color.bgRed.white.bold("Error conectar DB"), error);
   }
 }
 
@@ -18,5 +18,11 @@ const server = express();
 
 server.use(express.json()); //Habilitar lectura del body
 server.use("/api/products", router);
+
+server.get("/api", (req, res) => {
+  res.json({
+    msg: "Hello World",
+  });
+});
 
 export default server;

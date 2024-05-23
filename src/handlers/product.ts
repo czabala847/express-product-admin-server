@@ -49,7 +49,7 @@ export const createProduct = async (req: Request, res: Response) => {
 
   try {
     const product = await Product.create(req.body);
-    res.json({ data: product });
+    res.status(201).json({ data: product });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
