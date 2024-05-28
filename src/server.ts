@@ -1,4 +1,5 @@
 import color from "colors";
+import cors, { CorsOptions } from "cors";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import db from "./config/db";
@@ -17,6 +18,20 @@ export async function connectDB() {
 
 connectDB();
 const server = express();
+
+//Permitir conexiones
+
+const corsOptions: CorsOptions = {
+  origin: function (origin, callback) {
+    if (origin === process.env.FRONTEND_URL) {
+      callback(null, true);
+    } else {
+      callback(new Error("No permitido por CORS"));
+    }
+  },
+};
+
+server.use(cors(corsOptions));
 
 server.use(express.json()); //Habilitar lectura del body
 server.use("/api/products", router);
