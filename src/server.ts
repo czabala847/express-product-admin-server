@@ -1,6 +1,7 @@
 import color from "colors";
 import cors, { CorsOptions } from "cors";
 import express from "express";
+import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import db from "./config/db";
 import swaggerSpec from "./config/swagger";
@@ -34,6 +35,8 @@ const corsOptions: CorsOptions = {
 server.use(cors(corsOptions));
 
 server.use(express.json()); //Habilitar lectura del body
+
+server.use(morgan("dev"));
 server.use("/api/products", router);
 
 //Docs
